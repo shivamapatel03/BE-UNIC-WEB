@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BE UNIC - Services</title>
+    <!-- Use Tailwind CSS for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to Poppins and Inter fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for a modern, duotone aesthetic that mimics 3D -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3/dist/phosphor.js"></script>
+    <style>
+        /* Custom CSS for gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Responsive Mobile Menu Styling */
+        #mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Custom CSS for a gradient border effect on hover */
+        .card-gradient-border {
+            border: 2px solid transparent;
+            background: linear-gradient(#fff, #fff) padding-box,
+                        linear-gradient(to right, #6366F1, #8B5CF6, #EC4899) border-box;
+            background-size: 200% 200%;
+            transition: background-position 0.5s ease-in-out;
+        }
+        
+        .card-gradient-border:hover {
+            background-position: -100% 0;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* New CSS for the pricing card gradient border effect */
+        .pricing-card-container {
+            border-radius: 1.5rem; /* Matches inner card border-radius */
+            background: #fff;
+            padding: 2px; /* This padding will become the visible border on hover */
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+        }
+
+        .pricing-card-container:hover {
+            background: linear-gradient(135deg, #6366F1, #8B5CF6, #EC4899);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* New CSS for scroll-based fade-in effect */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* New CSS for the 3D tilt effect */
+        .tilt-effect-card {
+            transform-style: preserve-3d;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            perspective: 1000px;
+        }
+
+        .tilt-effect-card:hover {
+            box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-white font-inter">
+
+    <!-- Navbar Section -->
+    <header class="bg-white sticky top-0 z-50 py-4 px-8 border-b border-gray-100 flex justify-between items-center shadow-sm">
+        <a href="/index.html" class="font-bold text-xl tracking-tight">
+            <img src="/images/unic.png" alt="BE UNIC Logo" class="h-20 w-auto">
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-6 text-gray-900 font-bold">
+            <a href="/index.html" class="hover:text-black transition-colors duration-300">HOME</a>
+            <a href="/section/about.html" class="hover:text-black transition-colors duration-300">ABOUT</a>
+            
+            <!-- Dropdown menu for Services -->
+            <div class="relative group">
+                <a href="/section/services.html" class="hover:text-black transition-colors duration-300 flex items-center">
+                    SERVICES
+                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+                <!-- Dropdown content - hidden by default -->
+                <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg p-2 mt-2 w-48 z-20 transition-all duration-300 transform origin-top scale-y-0 group-hover:scale-y-100 opacity-0 group-hover:opacity-100">
+                    <a href="/section/services.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors">UI/UX Design</a>
+                    <a href="/section/services.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors">Branding & Identity</a>
+                    <a href="/section/services.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors">Website & App</a>
+                    <a href="/section/services.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors">Animation</a>
+                </div>
+            </div>
+            <a href="/section/contact.html" class="hover:text-black transition-colors duration-300">CONTACT</a>
+        </nav>
+        
+        <!-- Desktop Button -->
+        <a href="/section/getaquote.html" class="bg-black text-white px-4 py-2 rounded-full hidden md:block hover:bg-gray-800 font-bold transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+            Get a Quote
+        </a>
+
+        <!-- Mobile Menu Button (Hamburger) -->
+        <button id="mobile-menu-button" class="md:hidden">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-40 p-8 md:hidden shadow-lg">
+        <div class="flex justify-between items-center mb-8">
+            <a href="/index.html" class="font-bold text-xl tracking-tight">
+                <img  src="/images/unic.png" alt="BE UNIC Logo" class="h-20 w-auto">
+            </a>
+            <button id="close-mobile-menu-button">
+                <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="poppins flex flex-col space-y-4 text-gray-900 font-bold text-xl">
+            <a href="/index.html" class="hover:text-black transition-colors duration-300">HOME</a>
+            <a href="/section/about.html" class="hover:text-black transition-colors duration-300">ABOUT</a>
+
+            <!-- Mobile Services Dropdown -->
+            <div class="relative">
+                <button id="services-dropdown-button" class="flex items-center hover:text-black transition-colors duration-300">
+                    SERVICES
+                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" id="services-dropdown-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                <div id="services-dropdown" class="hidden pl-4 py-2 space-y-2">
+                    <a href="/section/services.html" class="block text-gray-700 hover:text-black">UI/UX Design</a>
+                    <a href="/section/services.html" class="block text-gray-700 hover:text-black">Branding & Identity</a>
+                    <a href="/section/services.html" class="block text-gray-700 hover:text-black">Website & App</a>
+                    <a href="/section/services.html" class="block text-gray-700 hover:text-black">Animation</a>
+                </div>
+            </div>
+            <a href="/section/contact.html" class="hover:text-black transition-colors duration-300">CONTACT</a>
+        </nav>
+        <a href="/section/getaquote.html" class="poppins bg-black text-white px-4 py-2 mt-8 rounded-full w-full hover:bg-gray-800 font-bold transform transition-all duration-300">
+            Get a Quote
+        </a>
+    </div>
+
+    <main class="container mx-auto px-4 md:px-0">
+        
+        <!-- Services Section -->
+        <section class="py-16 bg-gray-50 scroll-fade-in">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-12">
+                    Our <span class="gradient-text">Services</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Service Card 1: UI/UX Design -->
+                    <div class="bg-white rounded-3xl shadow-lg p-6 flex flex-col items-center text-center tilt-effect-card">
+                        <div class="p-4 rounded-full bg-indigo-100 mb-4">
+                            <i class="ph-palette-duotone text-indigo-600 text-4xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">UI/UX Design</h3>
+                        <p class="text-gray-600">
+                            Crafting intuitive and engaging user experiences that delight your customers and drive results.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 2: Branding & Identity -->
+                    <div class="bg-white rounded-3xl shadow-lg p-6 flex flex-col items-center text-center tilt-effect-card">
+                        <div class="p-4 rounded-full bg-purple-100 mb-4">
+                            <i class="ph-tag-duotone text-purple-600 text-4xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Branding & Identity</h3>
+                        <p class="text-gray-600">
+                            Building a strong, memorable brand identity that tells your unique story and resonates with your audience.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 3: Website & App -->
+                    <div class="bg-white rounded-3xl shadow-lg p-6 flex flex-col items-center text-center tilt-effect-card">
+                        <div class="p-4 rounded-full bg-orange-100 mb-4">
+                            <i class="ph-monitor-duotone text-orange-600 text-4xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Website & App</h3>
+                        <p class="text-gray-600">
+                            Developing beautiful, responsive, and high-performing websites and mobile applications.
+                        </p>
+                    </div>
+                    
+                    <!-- Service Card 4: Animation -->
+                    <div class="bg-white rounded-3xl shadow-lg p-6 flex flex-col items-center text-center tilt-effect-card">
+                        <div class="p-4 rounded-full bg-pink-100 mb-4">
+                            <i class="ph-film-strip-duotone text-pink-600 text-4xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Animation</h3>
+                        <p class="text-gray-600">
+                            Creating dynamic and engaging animations that bring your ideas to life and captivate your audience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-16 bg-white scroll-fade-in">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-12">Our Project Plans</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center md:items-stretch space-y-8 md:space-y-0 md:space-x-8">
+                    <!-- Plan 1: UI/UX Design -->
+                    <div class="pricing-card-container w-full max-w-sm tilt-effect-card">
+                        <div class="bg-white rounded-3xl shadow-lg p-8 h-full flex flex-col">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">UI/UX Design</h3>
+                            <p class="text-4xl font-extrabold text-gray-900 mb-4">
+                                ₹9,999<span class="text-xl font-normal text-gray-500">/project</span>
+                            </p>
+                            <ul class="text-gray-600 mb-8 space-y-2 flex-grow">
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-indigo-500"></i>
+                                    <span>User Research & Analysis</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-indigo-500"></i>
+                                    <span>Wireframing & Prototyping</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-indigo-500"></i>
+                                    <span>Visual & Interface Design</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-indigo-500"></i>
+                                    <span>Design System Creation</span>
+                                </li>
+                            </ul>
+                            <a href="/section/getaquote.html" class="inline-block w-full px-8 py-3 text-center text-white bg-indigo-500 rounded-full font-semibold hover:bg-indigo-600 transform transition-all duration-300 hover:scale-105">
+                                Get a Quote
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Plan 2: Web/App Development (Featured) -->
+                    <div class="pricing-card-container w-full max-w-sm md:w-1/3 tilt-effect-card">
+                        <div class="bg-white rounded-3xl shadow-2xl p-8 h-full flex flex-col border-t-8 border-purple-500">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Web/App Development</h3>
+                            <p class="text-4xl font-extrabold text-gray-900 mb-4">
+                                ₹14,999<span class="text-xl font-normal text-gray-500">/project</span>
+                            </p>
+                            <ul class="text-gray-600 mb-8 space-y-2 flex-grow">
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-purple-500"></i>
+                                    <span>Modern, Responsive Websites</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-purple-500"></i>
+                                    <span>E-commerce & CMS Integration</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-purple-500"></i>
+                                    <span>Mobile Application Development</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-purple-500"></i>
+                                    <span>Front-end & Back-end Solutions</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-purple-500"></i>
+                                    <span>SEO Optimization</span>
+                                </li>
+                            </ul>
+                            <a href="/section/getaquote.html" class="inline-block w-full px-8 py-3 text-center text-white bg-purple-500 rounded-full font-semibold hover:bg-purple-600 transform transition-all duration-300 hover:scale-105">
+                                Get a Quote
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Plan 3: Branding & Animation -->
+                    <div class="pricing-card-container w-full max-w-sm tilt-effect-card">
+                        <div class="bg-white rounded-3xl shadow-lg p-8 h-full flex flex-col">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Branding & Animation</h3>
+                            <p class="text-4xl font-extrabold text-gray-900 mb-4">
+                                ₹9,999<span class="text-xl font-normal text-gray-500">/project</span>
+                            </p>
+                            <ul class="text-gray-600 mb-8 space-y-2 flex-grow">
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-pink-500"></i>
+                                    <span>Logo & Visual Identity</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-pink-500"></i>
+                                    <span>Brand Style Guide</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-pink-500"></i>
+                                    <span>2D & 3D Animation</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="ph-check-circle-duotone text-pink-500"></i>
+                                    <span>Explainer Videos & Motion Graphics</span>
+                                </li>
+                            </ul>
+                            <a href="/section/getaquote.html" class="inline-block w-full px-8 py-3 text-center text-white bg-pink-500 rounded-full font-semibold hover:bg-pink-600 transform transition-all duration-300 hover:scale-105">
+                                Get a Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-12">Our Pricing Plans</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center md:items-stretch space-y-8 md:space-y-0 md:space-x-8">
+
+                    <!-- Plan 1: UI/UX Design -->
+                    <div class="bg-white rounded-3xl shadow-xl p-8 w-full max-w-sm md:w-1/3 border-t-8 border-indigo-500">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">UI/UX Design</h3>
+                        <p class="text-4xl font-extrabold text-gray-900 mb-4">
+                            ₹999<span class="text-xl font-normal text-gray-500">/mo</span>
+                        </p>
+                        <ul class="text-gray-600 mb-8 space-y-2">
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-indigo-500"></i>
+                                <span>Modern and clean UI/UX</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-indigo-500"></i>
+                                <span>24/7 support</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-indigo-500"></i>
+                                <span>Interactive Prototype</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-indigo-500"></i>
+                                <span>Design Systems</span>
+                            </li>
+                        </ul>
+                        <a href="./section/getaquote.html" class="inline-block w-full px-8 py-3 text-center text-white bg-indigo-500 rounded-full font-semibold hover:bg-indigo-600 transform transition-all duration-300 hover:scale-105">
+                            Choose Plan
+                        </a>
+                    </div>
+
+                    <!-- Plan 2: Web/App Design (Featured) -->
+                    <div class="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-sm md:w-1/3 border-t-8 border-orange-500">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Web/App Design</h3>
+                        <p class="text-4xl font-extrabold text-gray-900 mb-4">
+                            ₹2000<span class="text-xl font-normal text-gray-500">/mo</span>
+                        </p>
+                        <ul class="text-gray-600 mb-8 space-y-2">
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-orange-500"></i>
+                                <span>Modern and clean UI/UX</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-orange-500"></i>
+                                <span>24/7 support</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-orange-500"></i>
+                                <span>Interactive Prototype</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-orange-500"></i>
+                                <span>Design Systems</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-orange-500"></i>
+                                <span>Fully Responsive</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-orange-500"></i>
+                                <span>Front-end Development</span>
+                            </li>
+                        </ul>
+                        <a href="./section/getaquote.html" class="inline-block w-full px-8 py-3 text-center text-white bg-orange-500 rounded-full font-semibold hover:bg-orange-600 transform transition-all duration-300 hover:scale-105">
+                            Choose Plan
+                        </a>
+                    </div>
+
+                    <!-- Plan 3: Branding & Identity -->
+                    <div class="bg-white rounded-3xl shadow-xl p-8 w-full max-w-sm md:w-1/3 border-t-8 border-purple-500">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Branding & Identity</h3>
+                        <p class="text-4xl font-extrabold text-gray-900 mb-4">
+                            ₹699<span class="text-xl font-normal text-gray-500">/mo</span>
+                        </p>
+                        <ul class="text-gray-600 mb-8 space-y-2">
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-purple-500"></i>
+                                <span>Moodboard</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-purple-500"></i>
+                                <span>Logo Design</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-purple-500"></i>
+                                <span>Typography</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-purple-500"></i>
+                                <span>Brand Style Guide</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="ph-check-circle-duotone text-purple-500"></i>
+                                <span>Packaging Design</span>
+                            </li>
+                        </ul>
+                        <a href="./section/getaquote.html" class="inline-block w-full px-8 py-3 text-center text-white bg-purple-500 rounded-full font-semibold hover:bg-purple-600 transform transition-all duration-300 hover:scale-105">
+                            Choose Plan
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 px-8 text-center">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:text-left">
+            <!-- Col 1 -->
+            <div>
+                <a href="/index.html" class="font-bold text-lg mb-4 block">
+                    <img src="/images/unic.png" alt="BE UNIC Logo" class="h-20 w-auto">
+                </a>
+                <p class="text-gray-400 text-sm">Design, Make Sense.</p>
+            </div>
+            <!-- Col 2 -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="/index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="/section/about.html" class="hover:text-white">About</a></li>
+                    <li><a href="/section/services.html" class="hover:text-white">Services</a></li>
+                    <li><a href="/section/contact.html" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Col 3 -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4">Services</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="/section/services.html" class="hover:text-white">UI/UX Design</a></li>
+                    <li><a href="/section/services.html" class="hover:text-white">Branding</a></li>
+                    <li><a href="/section/services.html" class="hover:text-white">Website Development</a></li>
+                    <li><a href="/section/services.html" class="hover:text-white">Animation</a></li>
+                </ul>
+            </div>
+            <!-- Col 4 -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4">Connect</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li>Email: beunicmark@gmail.com</li>
+                    <li>Phone: +91 87994 29307</li>
+                    <li>Address: Surat</li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-800 pt-6">
+            &copy; 2025 BE UNIC. All rights reserved.
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript for mobile menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const servicesDropdownButton = document.getElementById('services-dropdown-button');
+        const servicesDropdown = document.getElementById('services-dropdown');
+        const servicesDropdownIcon = document.getElementById('services-dropdown-icon');
+    
+        // Toggle mobile menu
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+    
+        // Toggle mobile services dropdown
+        servicesDropdownButton.addEventListener('click', () => {
+            const isHidden = servicesDropdown.classList.contains('hidden');
+            if (isHidden) {
+                servicesDropdown.classList.remove('hidden');
+                servicesDropdownIcon.classList.add('rotate-180');
+            } else {
+                servicesDropdown.classList.add('hidden');
+                servicesDropdownIcon.classList.remove('rotate-180');
+            }
+        });
+
+        // JavaScript for scroll-based fade-in effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.scroll-fade-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2 // Adjust this value to control when the animation triggers
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // New: JavaScript for the 3D tilt effect on cards
+            const tiltCards = document.querySelectorAll('.tilt-effect-card');
+
+            tiltCards.forEach(card => {
+                const cardInner = card.querySelector(':scope > div'); // Select the immediate child div for the transform
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const rotateX = ((centerY - y) / centerY) * 10;
+                    const rotateY = ((x - centerX) / centerX) * 10;
+
+                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

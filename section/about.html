@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BE UNIC - About Us</title>
+    <!-- Use Tailwind CSS for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to Poppins and Inter fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for a modern, duotone aesthetic that mimics 3D -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3/dist/phosphor.js"></script>
+    <style>
+        /* Custom CSS for gradient text and floating animation */
+        .gradient-text {
+            background: linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Responsive Mobile Menu Styling */
+        #mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Floating effect for the image */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-white font-inter">
+
+    <!-- Navbar Section (Copied from index.html for consistency) -->
+    <header class="bg-white sticky top-0 z-50 py-4 px-8 border-b border-gray-100 flex justify-between items-center shadow-sm">
+        <a href="/index.html" class="font-bold text-xl tracking-tight">
+            <img src="/images/unic.png" alt="BE UNIC Logo" class="h-20 w-auto">
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-6 text-gray-900 font-bold">
+            <a href="/index.html" class="hover:text-black transition-colors duration-300">HOME</a>
+            <a href="/section/about.html " class="hover:text-black transition-colors duration-300">ABOUT</a>
+            
+            <!-- Dropdown menu for Services -->
+            <div class="relative group">
+                <a href="#" class="hover:text-black transition-colors duration-300 flex items-center">
+                    SERVICES
+                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+                <!-- Dropdown content - hidden by default -->
+                <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg p-2 mt-2 w-48 z-20 transition-all duration-300 transform origin-top scale-y-0 group-hover:scale-y-100 opacity-0 group-hover:opacity-100">
+                    <a href="/section/services.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors">UI/UX Design</a>
+                    <a href="/section/services.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors">Branding & Identity</a>
+                    <a href="/section/services.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors">Website & App</a>
+                    <a href="/section/services.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors">Animation</a>
+                </div>
+            </div>
+            <a href="/section/contact.html" class="hover:text-black transition-colors duration-300">CONTACT</a>
+        </nav>
+        
+        <!-- Desktop Button -->
+        <a href="/section/getaquote.html" class="bg-black text-white px-4 py-2 rounded-full hidden md:block hover:bg-gray-800 font-bold transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+            Get a Quote
+        </a>
+
+        <!-- Mobile Menu Button (Hamburger) -->
+        <button id="mobile-menu-button" class="md:hidden">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-40 p-8 md:hidden shadow-lg">
+        <div class="flex justify-between items-center mb-8">
+            <a href="/index.html" class="font-bold text-xl tracking-tight">
+                <img src="/images/unic.png" alt="BE UNIC Logo" class="h-20 w-auto">
+            </a>
+            <button id="close-mobile-menu-button">
+                <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="poppins flex flex-col space-y-4 text-gray-900 font-bold text-xl">
+            <a href="index.html" class="hover:text-black transition-colors duration-300">HOME</a>
+            <a href="/section/about.html" class="hover:text-black transition-colors duration-300">ABOUT</a>
+
+            <!-- Mobile Services Dropdown -->
+            <div class="relative">
+                <button id="services-dropdown-button" class="flex items-center hover:text-black transition-colors duration-300">
+                    SERVICES
+                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" id="services-dropdown-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                <div id="services-dropdown" class="hidden pl-4 py-2 space-y-2">
+                    <a href="/section/services.html" class="block text-gray-700 hover:text-black">UI/UX Design</a>
+                    <a href="/section/services.html" class="block text-gray-700 hover:text-black">Branding & Identity</a>
+                    <a href="/section/services.html" class="block text-gray-700 hover:text-black">Website & App</a>
+                    <a href="/section/services.html" class="block text-gray-700 hover:text-black">Animation</a>
+                </div>
+            </div>
+            <a href="#" class="hover:text-black transition-colors duration-300">CONTACT</a>
+        </nav>
+    </div>
+
+    <main class="container mx-auto px-4 md:px-0">
+        
+        <!-- About Us Hero Section (based on the uploaded image) -->
+        <section class="min-h-[calc(100vh-6rem)] flex flex-col items-center justify-center text-center relative overflow-hidden bg-white py-16">
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center text-left max-w-6xl mx-auto md:space-x-12">
+                <!-- Left-side content -->
+                <div class="flex flex-col items-start">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-black leading-normal mb-4 font-poppins">
+                        Design That Speaks for <span class="gradient-text">Your Brand</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl font-inter leading-relaxed text-justify">
+  We are a creative design agency driven by passion, innovation, and a love for storytelling through visuals. Our team specializes in UI/UX, logo design, animation, and complete branding solutions that help businesses thrive in the digital world. We provide an end-to-end service with creativity, strategy, and attention to detail - ensuring your brand connects with the right audience.
+</p>
+
+                    <a href="https://www.linkedin.com/company/107364183/admin/dashboard/" class="px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 hover:shadow-lg transform hover:-translate-y-1 transition-transform duration-300">
+                        Learn More About Us
+                    </a>
+                </div>
+                <!-- Right-side image -->
+                <div class="flex justify-center mt-8 md:mt-0">
+                    <img src="/images/earth.png" alt="3D Globe" class="w-98 h-98 md:w-98 md:h-98 float animate-pulse-slow transform hover:scale-110 transition-all duration-300">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Copied from index.html for consistency) -->
+    <footer class="bg-black text-white py-12 px-8 text-center">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:text-left">
+            <!-- Col 1 -->
+            <div>
+                <a href="/index.html" class="font-bold text-lg mb-4 block">
+                    <img src="/images/unic.png" alt="BE UNIC Logo" class="h-20 w-auto">
+                </a>
+                <p class="text-gray-400 text-sm">Design, Make Sense.</p>
+            </div>
+            <!-- Col 2 -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="/index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="/section/about.html" class="hover:text-white">About</a></li>
+                    <li><a href="/section/services.html" class="hover:text-white">Services</a></li>
+                    <li><a href="/section/contact.html" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Col 3 -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4">Services</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="services.html" class="hover:text-white">UI/UX Design</a></li>
+                    <li><a href="services.html" class="hover:text-white">Branding</a></li>
+                    <li><a href="services.html" class="hover:text-white">Website Development</a></li>
+                    <li><a href="services.html" class="hover:text-white">Animation</a></li>
+                </ul>
+            </div>
+            <!-- Col 4 -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4">Connect</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li>Email: beunicmark@gmail,com</li>
+                    <li>Phone: +92 87994 29307</li>
+                    <li>Address: Surat</li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-800 pt-6">
+            &copy; 2025 BE UNIC. All rights reserved.
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript for mobile menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const servicesDropdownButton = document.getElementById('services-dropdown-button');
+        const servicesDropdown = document.getElementById('services-dropdown');
+        const servicesDropdownIcon = document.getElementById('services-dropdown-icon');
+    
+        // Toggle mobile menu
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+    
+        // Toggle mobile services dropdown
+        servicesDropdownButton.addEventListener('click', () => {
+            const isHidden = servicesDropdown.classList.contains('hidden');
+            if (isHidden) {
+                servicesDropdown.classList.remove('hidden');
+                servicesDropdownIcon.classList.add('rotate-180');
+            } else {
+                servicesDropdown.classList.add('hidden');
+                servicesDropdownIcon.classList.remove('rotate-180');
+            }
+        });
+    </script>
+</body>
+</html>
