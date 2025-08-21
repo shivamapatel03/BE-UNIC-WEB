@@ -1,0 +1,94 @@
+/* Custom styles to match the design */
+body {
+    font-family: 'SF Pro Display','Poppins', sans-serif;
+    margin: 0;
+    background-color: #f7f7f7;
+    color: #1f1f1f; /* Added this line */
+}
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #f19963ff, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+}
+
+/* New CSS for the floating animation on images, with no scaling */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.floating-image-1 {
+    animation: float 4s ease-in-out infinite;
+}
+
+.floating-image-2 {
+    animation: float 5s ease-in-out infinite;
+}
+
+.floating-image-3 {
+    animation: float 4.5s ease-in-out infinite;
+}
+
+.floating-image-4 {
+    animation: float 5.5s ease-in-out infinite;
+}
+
+.floating-image-5 {
+    animation: float 6s ease-in-out infinite;
+}
+
+.pricing-card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.brand-box {
+    background-color: #16a34a;
+    color: white;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('4.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    border-radius: 1.5rem;
+}
+/* Mobile menu specific styles */
+.mobile-menu {
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
